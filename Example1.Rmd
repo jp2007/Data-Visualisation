@@ -1,0 +1,39 @@
+---
+title: "Example1"
+author: "JP"
+date: "5/12/2020"
+output:
+  pdf_document: default
+  html_document: default
+  params:
+    year: 2020 
+    out_dir: ~/Desktop
+---
+# Introduction
+
+# Methodology
+
+- bullet list
+
+# Load and Graph Data
+
+```{r Load Libraries and Data, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+gapminder <- read_csv("data/gapminder.csv")
+
+gapminder_1992 <- gapminder %>%
+  filter(year == 1992)
+```
+
+Now we make a graph
+
+```{r Plot Data, fig.height=3, fig.width=6, message=TRUE, warning=TRUE}
+ggplot(data = gapminder_1992,
+       mapping = aes(x=gdpPercap, y= lifeExp, color = continent)) +
+    geom_point()
+  
+```
+
+
+
